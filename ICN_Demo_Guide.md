@@ -25,8 +25,8 @@ vagrant ssh jump
 
 ### Step 2: List BareMetalHost resources
 ```bash
-# On the jump host, check the Metal3 BareMetalHost CRDs:
-kubectl get baremetalhost -n metal3 -o wide
+# On the jump host, check the Metal3 BareMetalHost CRDs (must run as sudo):
+sudo kubectl get baremetalhost -n metal3 -o wide
 ```
 **Expected output:** Shows machine-1 and machine-2 with their provisioning state,
 BMC addresses, and current status (should be "provisioned").
@@ -34,7 +34,7 @@ BMC addresses, and current status (should be "provisioned").
 ### Step 3: Inspect a BareMetalHost in detail
 ```bash
 # See the full lifecycle of machine-1:
-kubectl describe baremetalhost machine-1 -n metal3
+sudo kubectl describe baremetalhost machine-1 -n metal3
 ```
 **What to look for:**
 - `Status.Provisioning.State`: Should be "provisioned"
@@ -46,7 +46,7 @@ kubectl describe baremetalhost machine-1 -n metal3
 ### Step 4: Check Ironic containers
 ```bash
 # See OpenStack Ironic running as containers:
-kubectl get pods -n metal3 | grep ironic
+sudo kubectl get pods -n metal3 | grep ironic
 ```
 **Expected:** ironic, ironic-inspector, ironic-dnsmasq pods — all the OpenStack components
 running as Kubernetes pods inside the bootstrap cluster.
