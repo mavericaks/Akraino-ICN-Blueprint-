@@ -71,12 +71,16 @@ provisioned AUTOMATICALLY by ICN from empty virtual "bare-metal" machines.
 
 ### Step 7: Deploy a real workload
 ```bash
+# First, remove the default control-plane taint so workloads can run on machine-1:
+sudo KUBECONFIG=/etc/kubernetes/admin.conf kubectl taint nodes --all node-role.kubernetes.io/master- || true
+
 # Deploy an nginx web server:
 sudo KUBECONFIG=/etc/kubernetes/admin.conf kubectl create deployment icn-demo-web \
   --image=k8s.gcr.io/pause:3.4.1 --replicas=4
 
 # Watch pods get distributed across BOTH ICN-provisioned nodes:
 sudo KUBECONFIG=/etc/kubernetes/admin.conf kubectl get pods -l app=icn-demo-web -o wide -w
+
 ```
 **What this shows:** The cluster ICN provisioned from bare metal is fully functional
 and can run real workloads distributed across nodes.
