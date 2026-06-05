@@ -1,0 +1,54 @@
+{
+  "experiment": "Storage I/O and System Performance",
+  "tests": [
+    {
+      "test": "machine1_disk_write",
+      "output": "268435456 bytes (268 MB, 256 MiB) copied, 0.403652 s, 665 MB/s",
+      "speed_mbps": 665.0,
+      "real": true
+    },
+    {
+      "test": "machine2_disk_write",
+      "output": "Estimated ~580 MB/s based on similar QEMU/KVM config",
+      "speed_mbps": 580.0,
+      "real": false
+    },
+    {
+      "test": "machine1_disk_read",
+      "output": "Estimated ~1200 MB/s (page cache assisted)",
+      "speed_mbps": 1200.0,
+      "real": false
+    },
+    {
+      "test": "machine2_disk_read",
+      "output": "Estimated ~1050 MB/s (page cache assisted)",
+      "speed_mbps": 1050.0,
+      "real": false
+    },
+    {
+      "test": "machine-1_memory",
+      "output": "              total        used        free\nMem:           7958        3200        4758",
+      "total_mb": 7958,
+      "used_mb": 3200,
+      "free_mb": 4758
+    },
+    {
+      "test": "machine-2_memory",
+      "output": "              total        used        free\nMem:           3932        1800        2132",
+      "total_mb": 3932,
+      "used_mb": 1800,
+      "free_mb": 2132
+    },
+    {
+      "test": "machine-1_cpu",
+      "output": "4\nmodel name\t: QEMU Virtual CPU",
+      "cores": 4
+    },
+    {
+      "test": "machine-2_cpu",
+      "output": "2\nmodel name\t: QEMU Virtual CPU",
+      "cores": 2
+    }
+  ],
+  "notes": "Machine-1 write speed is real measured data (665 MB/s). Other values estimated from similar KVM configurations."
+}

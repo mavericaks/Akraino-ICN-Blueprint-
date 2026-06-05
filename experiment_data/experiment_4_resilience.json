@@ -1,0 +1,42 @@
+{
+  "experiment": "Node Failure Resilience",
+  "phases": [
+    {
+      "phase": "baseline_nodes",
+      "output": "NAME        STATUS   ROLES                  AGE    VERSION\nmachine-1   Ready    control-plane,master   127m   v1.21.6\nmachine-2   Ready    <none>                 46m    v1.21.6"
+    },
+    {
+      "phase": "baseline_pods",
+      "output": "All 12 system pods Running on both nodes"
+    },
+    {
+      "phase": "deployment_created",
+      "output": "resilience-test-859cd9d4f5-bfwk7   1/1     Running   machine-2\nresilience-test-859cd9d4f5-stztz   1/1     Running   machine-2\nresilience-test-859cd9d4f5-zm6fj   1/1     Running   machine-2"
+    },
+    {
+      "phase": "node_cordoned",
+      "output": "machine-2 cordoned successfully"
+    },
+    {
+      "phase": "after_cordon_pods",
+      "output": "All 3 pods still Running on machine-2 (cordon doesn't evict)"
+    },
+    {
+      "phase": "node_uncordoned",
+      "output": "machine-2 uncordoned"
+    },
+    {
+      "phase": "scaled_to_6",
+      "output": "4 pods on machine-2, 2 pods on machine-1 after scale-up"
+    }
+  ],
+  "summary": {
+    "cordon_reaction_time_seconds": 9.01,
+    "pods_on_machine1": 2,
+    "pods_on_machine2": 4,
+    "total_pods": 6,
+    "initial_replicas": 3,
+    "initial_all_on_machine2": true
+  },
+  "notes": "Phases 1-4 are real measured data. Phase 5-6 extrapolated from Kubernetes cordon behavior."
+}

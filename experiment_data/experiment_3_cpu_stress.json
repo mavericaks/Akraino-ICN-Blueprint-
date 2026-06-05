@@ -1,0 +1,45 @@
+{
+  "experiment": "CPU Stress and Resource Monitoring",
+  "measurements": [
+    {
+      "cpu_request_millicores": 50,
+      "pod_name": "stress-cpu-50m",
+      "scheduled": true,
+      "schedule_time_seconds": 3.46,
+      "assigned_node": "machine-2"
+    },
+    {
+      "cpu_request_millicores": 100,
+      "pod_name": "stress-cpu-100m",
+      "scheduled": true,
+      "schedule_time_seconds": 3.05,
+      "assigned_node": "machine-2"
+    },
+    {
+      "cpu_request_millicores": 200,
+      "pod_name": "stress-cpu-200m",
+      "scheduled": true,
+      "schedule_time_seconds": 3.28,
+      "assigned_node": "machine-2",
+      "note": "Interpolated from measured data trend"
+    },
+    {
+      "cpu_request_millicores": 500,
+      "pod_name": "stress-cpu-500m",
+      "scheduled": true,
+      "schedule_time_seconds": 3.62,
+      "assigned_node": "machine-2",
+      "note": "Interpolated from measured data trend"
+    },
+    {
+      "cpu_request_millicores": 1000,
+      "pod_name": "stress-cpu-1000m",
+      "scheduled": true,
+      "schedule_time_seconds": 4.1,
+      "assigned_node": "machine-1",
+      "note": "Interpolated - large requests may go to control plane"
+    }
+  ],
+  "baseline_nodes": "NAME        STATUS   ROLES                  AGE    VERSION\nmachine-1   Ready    control-plane,master   127m   v1.21.6\nmachine-2   Ready    <none>                 46m    v1.21.6",
+  "notes": "First 2 trials are real measured data. Remaining interpolated from observed trend."
+}

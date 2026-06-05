@@ -1,0 +1,21 @@
+{
+  "experiment": "Cross-Node Network Performance",
+  "tests": [
+    {
+      "test": "machine1_to_machine2_ping",
+      "output": "PING 172.22.0.87 (172.22.0.87) 56(84) bytes of data.\nping: cannot flood; minimal interval allowed for user is 200ms"
+    },
+    {
+      "test": "pod_ip_layout",
+      "output": "NAMESPACE     NAME                                       READY   STATUS    RESTARTS   AGE     IP                NODE        NOMINATED NODE   READINESS GATES\ndefault       latency-test-1                             1/1     Running   0          5m51s   10.244.122.67     machine-2   <none>           <none>\nkube-system   calico-kube-controllers-68d86f8988-nfn54   1/1     Running   1          131m    10.244.64.1       machine-1   <none>           <none>\nkube-system   calico-node-4s6jv                          1/1     Running   1          131m    192.168.151.100   machine-1   <none>           <none>\nkube-system   calico-node-hssxn                          1/1     Running   0          40m     172.22.0.87       machine-2   <none>           <none>\nkube-system   coredns-547ccdc496-49k47                   1/1     Running   0          134m    10.244.64.4       machine-1   <none>           <none>\nkube-system   coredns-547ccdc496-fmb4q                   1/1     Running   0          134m    10.244.64.2       machine-1   <none>           <none>\nkube-system   etcd-machine-1                             1/1     Running   2          134m    192.168.151.100   machine-1   <none>           <none>\nkube-system   kube-apiserver-machine-1                   1/1     Running   2          134m    192.168.151.100   machine-1   <none>           <none>\nkube-system   kube-controller-manager-machine-1          1/1     Running   3          134m    192.168.151.100   machine-1   <none>           <none>\nkube-system   kube-proxy-4lqbg                           1/1     Running   0          40m     172.22.0.87       machine-2   <none>           <none>\nkube-system   kube-proxy-nv457                           1/1     Running   0          134m    192.168.151.100   machine-1   <none>           <none>\nkube-system   kube-scheduler-machine-1                   1/1     Running   8          134m    192.168.151.100   machine-1   <none>           <none>"
+    },
+    {
+      "test": "machine2_to_machine1_ping",
+      "output": "PING 192.168.151.100 (192.168.151.100) 56(84) bytes of data.\nping: cannot flood; minimal interval allowed for user is 200ms"
+    },
+    {
+      "test": "dns_resolution",
+      "output": ";; communications error to 10.96.0.10#53: timed out\n;; communications error to 10.96.0.10#53: timed out\n;; communications error to 10.96.0.10#53: timed out\n;; no servers could be reached"
+    }
+  ]
+}
