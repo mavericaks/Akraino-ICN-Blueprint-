@@ -45,11 +45,10 @@ sudo kubectl describe baremetalhost machine-1 -n metal3
 
 ### Step 4: Check Ironic containers
 ```bash
-# See OpenStack Ironic running as containers:
-sudo kubectl get pods -n metal3 | grep ironic
+# See OpenStack Ironic running as containers (it runs 6 containers in 1 pod):
+sudo kubectl get pods -n capm3-system | grep ironic
 ```
-**Expected:** ironic, ironic-inspector, ironic-dnsmasq pods — all the OpenStack components
-running as Kubernetes pods inside the bootstrap cluster.
+**Expected:** You will see a pod like `capm3-ironic-...` showing `6/6 Running`. This single pod contains all the OpenStack components (ironic, ironic-inspector, dnsmasq) running inside the bootstrap cluster.
 
 ---
 
