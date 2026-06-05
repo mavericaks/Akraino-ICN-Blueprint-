@@ -144,19 +144,9 @@ exit
 exit
 
 # Now back on the ICN Host VM (user `icn`):
-cat /home/icn/icn/deploy/site/vm/site.yaml
+cat /home/icn/icn/deploy/site/vm/deployment/site.yaml
 ```
-**What this shows:** The declarative site definition — specifying how many machines,
-their BMC addresses, network config, and OS image. ICN takes this YAML and
-turns it into running bare-metal Kubernetes nodes. THIS is Zero Touch Provisioning.
-
-### Step 13: Examine the cloud-init user-data
-```bash
-cat /home/icn/icn/deploy/site/vm/user-data.yaml
-```
-**What this shows:** The cloud-init script that runs on each provisioned node.
-It installs kubeadm, configures networking, and joins the Kubernetes cluster —
-all automatically, without anyone logging into the server.
+**What this shows:** The full declarative site definition (`site.yaml`). This file contains everything: the `BareMetalHost` definitions, BMC addresses, OS images, and even the embedded `KubeadmConfigTemplate` (which acts as the cloud-init script). ICN takes this YAML and turns it into running bare-metal Kubernetes nodes. THIS is Zero Touch Provisioning.
 
 ### Step 14: Check the Sushy emulator (Virtual BMC)
 ```bash
