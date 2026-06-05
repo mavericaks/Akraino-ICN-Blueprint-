@@ -139,7 +139,11 @@ sudo KUBECONFIG=/etc/kubernetes/admin.conf kubectl get nodes
 
 ### Step 12: Examine the site configuration
 ```bash
-# Back on the ICN Host VM:
+# Exit machine-1 and exit the jump host to get back to the ICN Host VM:
+exit
+exit
+
+# Now back on the ICN Host VM (user `icn`):
 cat /home/icn/icn/deploy/site/vm/site.yaml
 ```
 **What this shows:** The declarative site definition — specifying how many machines,
